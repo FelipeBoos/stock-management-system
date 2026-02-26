@@ -66,4 +66,18 @@ public class CategoriaRepository {
         categorias.clear();
         nextId = 1;
     }
+
+    public boolean existsByNome(String nome) {
+        if (nome == null) return false;
+
+        String normalized = nome.trim();
+        
+        for (Categoria c : categorias) {
+            if (c.getNome() != null && c.getNome().equalsIgnoreCase(normalized)) {
+                return true;
+            }
+        }
+
+        return false;
+    }
 }
