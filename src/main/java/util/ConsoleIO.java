@@ -18,7 +18,7 @@ public class ConsoleIO {
     }
 
     public void pausar() {
-        System.out.println("Digite ENTER para continuar:");
+        System.out.println("\nDigite ENTER para continuar:");
 
         scanner.nextLine();
     }
