@@ -1,7 +1,11 @@
 package app;
 
+import ui.menus.MainMenu;
+
 public class Main {
     public static void main(String[] args){
-        System.out.println("Teste");
+        MainMenu menuPrincipal = new MainMenu();
+
+        menuPrincipal.exibir();
     }
 }
