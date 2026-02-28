@@ -4,9 +4,8 @@ import ui.MenuOpcoes;
 import ui.OpcaoMenu;
 
 public class MainMenu extends MenuOpcoes{
-    CategoriaMenu menuCategorias = new CategoriaMenu();
     
-    public MainMenu() {
+    public MainMenu(CategoriaMenu menuCategorias) {
         super("Menu Principal");
 
         addOpcao(new OpcaoMenu("Categorias", () -> menuCategorias.exibir()));
