@@ -1,5 +1,7 @@
 package service;
 
+import java.util.List;
+
 import domain.Categoria;
 import repository.CategoriaRepository;
 import domain.exception.ValidationException;
@@ -23,6 +25,24 @@ public class CategoriaService {
         return repository.create(categoria);
     }
 
+    public Categoria editar(Long id, String novoNome) {
+        if (id == null) {
+            throw new ValidationException("Id da categoria é obrigatório");
+        }
+
+        Categoria existente = repository.findById(id)
+                .orElseThrow(() -> NotFoundException.of("Categoria", id));
+
+        String normalized = normalizeNome(novoNome);
+
+        if (!existente.getNome().equalsIgnoreCase(normalized) && repository.existsByNome(normalized)) {
+            throw new ValidationException("Já existe uma categoria com esse nome: " + normalized);
+        }
+
+        existente.setNome(normalized);
+        return repository.update(existente);
+    }
+
     public Categoria buscarPorId(Long id) {
         if (id == null) {
             throw new ValidationException("Id da categoria é obrigatório para realizar busca");
@@ -30,6 +50,10 @@ public class CategoriaService {
 
         return repository.findById(id)
                 .orElseThrow(() -> NotFoundException.of("Categoria", id));
+    }
+
+    public List<Categoria> listar() {
+        return repository.findAll();
     }
 
     public void remover(Long id) {

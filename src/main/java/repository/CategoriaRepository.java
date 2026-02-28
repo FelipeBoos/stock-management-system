@@ -29,6 +29,7 @@ public class CategoriaRepository {
         for (int i = 0; i < categorias.size(); i++) {
             if (categorias.get(i).getId().equals(categoria.getId())) {
                 categorias.set(i, categoria);
+                return categoria;
             }
         }
 

@@ -21,4 +21,12 @@ mvn exec:java
 
 ## Project Status
 
-Level 1 — initial setup and architecture.
+**Level 1 — Core domain implemented (Categories)**
+
+- Maven project setup
+- Layered architecture (domain, repository, service, ui)
+- Domain exceptions (Business, Validation, NotFound)
+- Category entity with validations
+- In-memory repository
+- Service layer with business rules
+- Unit tests for category validations
