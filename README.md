@@ -21,7 +21,7 @@ mvn exec:java
 
 ## Project Status
 
-**Level 1 — console menus, category management and business validations**
+**Level 1 — Console UI and Category CRUD (create/list/update)**
 
 - Maven project setup
 - Layered architecture (domain, repository, service, ui)
@@ -34,8 +34,9 @@ mvn exec:java
 ## Current Features
 
 - Console-based navigation with nested menus
-- Category management:
+- Category management (console):
   - Create categories via terminal
-  - Validate unique and non-empty names
+  - List categories
+  - Update category by ID (with validations)
 - In-memory persistence
 - Clean architecture separation (UI, Service, Repository, Domain)
