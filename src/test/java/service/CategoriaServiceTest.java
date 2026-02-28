@@ -8,7 +8,6 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import domain.Categoria;
 import repository.CategoriaRepository;
-import service.CategoriaService;
 import domain.exception.ValidationException;
 import domain.exception.NotFoundException;
 
