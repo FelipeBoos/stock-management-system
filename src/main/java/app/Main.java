@@ -15,5 +15,8 @@ public class Main {
         MainMenu menuPrincipal = new MainMenu(menuCategorias);
 
         menuPrincipal.exibir();
+
+        System.out.println("Finalizando programa...");
+        
     }
 }

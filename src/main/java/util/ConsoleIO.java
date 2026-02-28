@@ -16,4 +16,10 @@ public class ConsoleIO {
 
         return scanner.nextLine();
     }
+
+    public void pausar() {
+        System.out.println("Digite ENTER para continuar:");
+
+        scanner.nextLine();
+    }
 }

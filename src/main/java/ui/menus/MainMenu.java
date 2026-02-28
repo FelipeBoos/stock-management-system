@@ -7,12 +7,12 @@ public class MainMenu extends MenuOpcoes{
     
     public MainMenu(CategoriaMenu menuCategorias) {
         super("Menu Principal");
+        setOpcaoZeroLabel("Sair");
 
-        addOpcao(new OpcaoMenu("Categorias", () -> menuCategorias.exibir()));
-        addOpcao(new OpcaoMenu("Produtos", () -> System.out.println("Produtos...")));
-        addOpcao(new OpcaoMenu("Clientes", () -> System.out.println("Clientes...")));
-        addOpcao(new OpcaoMenu("Pedidos", () -> System.out.println("Pedidos...")));
-        addOpcao(new OpcaoMenu("Relatórios", () -> System.out.println("Relatórios...")));
-        addOpcao(new OpcaoMenu("Sair", () -> System.out.println("Finalizando programa...")));
+        addOpcao(new OpcaoMenu("Categorias", () -> menuCategorias.exibir(), true));
+        addOpcao(new OpcaoMenu("Produtos", () -> System.out.println("Produtos..."), false));
+        addOpcao(new OpcaoMenu("Clientes", () -> System.out.println("Clientes..."), false));
+        addOpcao(new OpcaoMenu("Pedidos", () -> System.out.println("Pedidos..."), false));
+        addOpcao(new OpcaoMenu("Relatórios", () -> System.out.println("Relatórios..."), false));
     }
 }

@@ -21,7 +21,7 @@ mvn exec:java
 
 ## Project Status
 
-**Level 1 — Core domain implemented (Categories)**
+**Level 1 — console menus, category management and business validations**
 
 - Maven project setup
 - Layered architecture (domain, repository, service, ui)
@@ -30,3 +30,12 @@ mvn exec:java
 - In-memory repository
 - Service layer with business rules
 - Unit tests for category validations
+
+## Current Features
+
+- Console-based navigation with nested menus
+- Category management:
+  - Create categories via terminal
+  - Validate unique and non-empty names
+- In-memory persistence
+- Clean architecture separation (UI, Service, Repository, Domain)

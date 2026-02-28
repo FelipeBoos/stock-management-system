@@ -13,10 +13,18 @@ public class CategoriaMenu extends MenuOpcoes{
         super("Menu Categorias");
         this.service = service;
 
-        addOpcao(new OpcaoMenu("Cadastrar categoria", () -> System.out.println("TODO: Cadastrando categoria...")));
-        addOpcao(new OpcaoMenu("Listar categorias", () -> System.out.println("Listando categorias...")));
-        addOpcao(new OpcaoMenu("Editar categoria", () -> System.out.println("Editando categoria...")));
-        addOpcao(new OpcaoMenu("Excluir categoria", () -> System.out.println("Excluindo categoria...")));
+        addOpcao(new OpcaoMenu("Cadastrar categoria", () -> cadastrarCategoria(), false));
+        addOpcao(new OpcaoMenu("Listar categorias", () -> System.out.println("Listando categorias..."), false));
+        addOpcao(new OpcaoMenu("Editar categoria", () -> System.out.println("Editando categoria..."), false));
+        addOpcao(new OpcaoMenu("Excluir categoria", () -> System.out.println("Excluindo categoria..."), false));
+    }
+
+    public void cadastrarCategoria() {
+        ConsoleIO consoleIO = new ConsoleIO();
+
+        String nome = consoleIO.lerString("Digite o nome da nova categoria:");
+        Categoria categoria = service.criar(nome);
+        System.out.println("Categoria criada com sucesso: " + categoria.getNome());
     }
 
 
