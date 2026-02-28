@@ -21,7 +21,7 @@ mvn exec:java
 
 ## Project Status
 
-**Level 1 — Console UI and Category CRUD (create/list/update)**
+**Level 1 — Category CRUD completed**
 
 - Maven project setup
 - Layered architecture (domain, repository, service, ui)

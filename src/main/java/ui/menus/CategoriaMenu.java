@@ -22,7 +22,7 @@ public class CategoriaMenu extends MenuOpcoes{
         addOpcao(new OpcaoMenu("Cadastrar categoria", () -> opcaoCadastrarCategoria(), false));
         addOpcao(new OpcaoMenu("Listar categorias", () -> opcaoListarCategorias(), false));
         addOpcao(new OpcaoMenu("Editar categoria", () -> opcaoEditarCategoria(), false));
-        addOpcao(new OpcaoMenu("Excluir categoria", () -> System.out.println("Excluindo categoria..."), false));
+        addOpcao(new OpcaoMenu("Excluir categoria", () -> opcaoExcluirCategoria(), false));
     }
 
     public void opcaoCadastrarCategoria() {
@@ -44,7 +44,7 @@ public class CategoriaMenu extends MenuOpcoes{
 
         while (true) {
             try {
-                long idDigitado = consoleIO.lerInt("\nInsira o Id da categoria que deseja editar (digite 0 para cancelar):");
+                long idDigitado = consoleIO.lerInt("\nDigite o Id da categoria que deseja editar (0 para cancelar):");
                 if (idDigitado == 0) return;
                 if (idDigitado < 0) {
                     System.out.println("Id inválido. Tente novamente");
@@ -70,11 +70,47 @@ public class CategoriaMenu extends MenuOpcoes{
                 break;
             
             } catch (NotFoundException e) {
-                System.out.println("Id informado não existe. Tente novamente");
+                System.out.println("Não existe categoria cadastrada para o ID informado. Tente novamente");
             } catch (ValidationException e) {
                 System.out.println("Erro ao editar: " + e.getMessage());
             } catch (BusinessException e) {
                 System.out.println("Erro ao editar: " + e.getMessage());
+            }
+        }
+    }
+
+    public void opcaoExcluirCategoria() {
+        exibirTituloOpcao("Excluindo categoria");
+        System.out.println("Categorias cadastradas:\n");
+        exibirCategoriasCadastradas();
+
+        while (true) {
+            try {
+                long idDigitado = consoleIO.lerInt("\nDigite o ID da categoria que deseja excluir (0 para cancelar):");
+                if (idDigitado == 0) return;
+                if (idDigitado < 0) {
+                    System.out.println("Id inválido. Tente novamente");
+                    continue;
+                }
+
+                Long id = idDigitado;
+
+                Categoria categoria = service.buscarPorId(id);
+
+                String resposta = consoleIO.lerString("Tem certeza que deseja excluir a categoria \"" +
+                    categoria.getNome() + "\"? Digite s para confirmar (qualquer outra tecla para cancelar");
+
+                if (!resposta.trim().equalsIgnoreCase("s")) return;
+
+                service.remover(id);
+
+                System.out.println("Categoria removida com sucesso.");
+                break;
+
+            } catch (NotFoundException e) {
+                System.out.println("Não existe categoria cadastrada para o ID informado. Tente novamente");
+            } catch (BusinessException e) {
+                System.out.println("Erro ao excluir categoria: " + e.getMessage());
             }
         }
     }
