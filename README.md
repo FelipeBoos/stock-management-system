@@ -43,6 +43,6 @@ Level 1 — Category CRUD (console) + Product entity added (domain)
   - Update
   - Delete
 - Product management via console:
-  - entity only; validation and repository next
+  - entity and repository only; service and validations next
 - In-memory persistence
 - Clean architecture separation (UI, Service, Repository, Domain)
